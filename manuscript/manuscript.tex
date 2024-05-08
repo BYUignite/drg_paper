@@ -11,7 +11,7 @@
 \usepackage{lineno}
 \usepackage[mathcal]{euscript}
 \usepackage{xcolor}                  % coloring text
-
+\usepackage{hyperref}
 \usepackage{lipsum}
 
 \newcommand{\prtl}[2]{\frac{\partial #1}{\partial #2}}
@@ -23,7 +23,7 @@
 
 %\preprint{}
 
-\title{Chemical Mechanism Reduction Using a Directed Graph Relation Approach} 
+\title{DRG code for the reduction of chemical mechanisms} 
 
 \author[byu]{Jansen Berryhill}
 \ead{jansenpb@byu.edu}
@@ -40,14 +40,16 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%
+
 \begin{abstract}
-https://www.overleaf.com/project/65568d11b19a494faddfef8b
-\lipsum[1]     % replace this with your abstract text
+%https://www.overleaf.com/project/65568d11b19a494faddfef8b
+The directed relation graph (DRG) code is a C++ implementation of the DRG method for chemical mechanism reduction. Chemical mechanism reduction can lead to a significant decrease in the computational cost of a simulation. The code reads in a full mechanism file and eliminates chemical species and reactions that do not fall within a user defined tolerance level. A skeletal mechanism is then created that contains the remaining species and reactions. An example case of the reduction of the GRI-Mech 3.0 for methane has been included. Access to this code allows researchers to quickly create their own reduced chemical mechanisms. This code can be expanded to include the latest developments of the DRG method to allow for larger and more complex chemical mechanisms.  % replace this with your abstract text
 
 \end{abstract}
 
 \begin{keyword} 
-jet \sep particle dispersion \sep one dimensional turbulence \sep ODT
+directed relation graph \sep chemical mechanism \sep DRG
 \end{keyword}
 
 %-----------------------------------------------------------------------------------
@@ -57,10 +59,25 @@ jet \sep particle dispersion \sep one dimensional turbulence \sep ODT
 %-----------------------------------------------------------------------------------
 
 \linenumbers
+\section{Program summary}
+\textit{Program Title:} Directed relation graph (DRG)
+\par
+%\textit{CPC library link to program files:}
+\textit{Developer's repository link:} 
+\par
+\textit{Programming language:} C++
+\par
+\textit{Nature of problem:}
+\par
+\textit{Solution method:}
+\par
+\textit{Additional comments including restrictions and unusual features:}
 
 \section{Introduction}      \label{sec:intro}
-
-\lipsum[2]     % replace this with your abstract text
+\paragraph{}
+Chemical mechanisms play an important role in combustion modeling. A full chemical mechanism can be tailored for a certain fuel, like methane (CH$_4$) or ethylene (C$_2$H$_2$). (REFS HERE) However, these full mechanisms can contain many species and hundreds of chemical reactions, which can greatly increase the computational cost of the simulation. For example, simulations using finite rate chemistry must solve a partial differential equation (PDE) for every chemical species. One solution to this issue is the usage of reduced or skeletal mechanisms. A reduced mechanism eliminates certain species and their corresponding reactions from the mechanism, thereby reducing the number of PDEs that need to be solved. (REF HERE?) 
+\paragraph{}
+\lipsum[2]     % replace this with your intro text
 
 Belaying pin loot Yellow Jack run a shot across the bow plunder provost nipper gangway brig port. Snow bowsprit deadlights yawl \cite{Lignell_2011} fathom grog blossom booty black spot gun starboard. Draft log hornswaggle Sea Legs bring a spring upon her cable draught gabion grapple overhaul spyglass \cite{Ferziger_2002, Cantera_new}.
 
@@ -70,7 +87,7 @@ Quarterdeck prow hardtack main sheet warp starboard crow's nest reef jib shrouds
 
 %-----------------------------------------------------------------------------------
 
-\section{Numerical description} \label{s:model}
+\section{Methods} \label{s:methods}
 
 \lipsum[1]
 %
