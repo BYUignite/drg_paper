@@ -1,83 +1,106 @@
-\documentclass[review,3p]{elsarticle}
-%\documentclass[5p]{elsarticle}
+%% 
+%% Copyright 2007, 2008, 2009 Elsevier Ltd
+%% 
+%% This file is part of the 'Elsarticle Bundle'.
+%% ---------------------------------------------
+%% 
+%% It may be distributed under the conditions of the LaTeX Project Public
+%% License, either version 1.2 of this license or (at your option) any
+%% later version.  The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.2 or later is part of all distributions of LaTeX
+%% version 1999/12/01 or later.
+%% 
+%% The list of all files belonging to the 'Elsarticle Bundle' is
+%% given in the file `manifest.txt'.
+%% 
 
-\usepackage{graphicx}               % Include figure files
-\usepackage{array}
-\usepackage{amsmath} 
-\usepackage{amssymb} 
-\usepackage{bm}                     % bold math
-\usepackage{caption}
-\usepackage{subcaption}
-\usepackage{lineno}
-\usepackage[mathcal]{euscript}
-\usepackage{xcolor}                  % coloring text
+%% Template article for Elsevier's document class `elsarticle'
+%% with numbered style bibliographic references
+%% SP 2008/03/01
+
+
+\documentclass[preprint,12pt, a4paper]{elsarticle}
+
+\usepackage{amssymb}
 \usepackage{hyperref}
-\usepackage{lipsum}
+%\setlength{\parindent}{0pt}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{subcaption}
+\DeclareMathOperator\erf{erf}
 
+\usepackage{lineno}
+
+
+\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}}
+\newcommand\tprime{\prime\prime\prime}
 \newcommand{\prtl}[2]{\frac{\partial #1}{\partial #2}}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{document}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%\preprint{}
-
-\title{Directed relation graph: A method for reducing chemical mechanisms} 
-
-\author[byu]{Jansen Berryhill}
-\ead{jansenpb@byu.edu}
-\author[byu]{David O. Lignell\corref{cor1}\fnref{fn1}}
-\ead{davidlignell@byu.edu}
-
-\address[byu]{350 CB, Brigham Young University, Provo, UT 84602, USA}
-\cortext[cor1]{Corresponding author}
-\fntext[fn1]{Phone: (801) 422-1772}
+\newcommand{\code}[1]{\texttt{#1}}
 
 \journal{SoftwareX}
 
-\date{\today}
+\begin{document}
+\begin{frontmatter}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{DRG: A method for chemical mechanism reduction}
+\author[byu]{Jansen P. Berryhill}
+\author[byu]{Jared W. Porter}
+\author[byu]{David O. Lignell\corref{cor1}}
+\ead{davidlignell@byu.edu}
 
-%%%
+\address[byu]{Chemical Engineering Department, Brigham Young University, Provo, UT 84602, USA}
+\cortext[cor1]{Corresponding author}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \begin{abstract}
 %https://www.overleaf.com/project/65568d11b19a494faddfef8b
-The directed relation graph (DRG) code is a C++ implementation of the DRG method for chemical mechanism reduction. Chemical mechanism reduction can lead to a significant decrease in the computational cost of a simulation. The code reads in a full mechanism file and eliminates chemical species and reactions that do not fall within a user defined tolerance level. A skeletal mechanism is then created that contains the remaining species and reactions. An example case of the reduction of the GRI-Mech 3.0 for methane has been included. Access to this code allows researchers to quickly create their own reduced chemical mechanisms. This code can be expanded to include the latest developments of the DRG method to allow for larger and more complex chemical mechanisms.  % replace this with your abstract text
+The directed relation graph (DRG) code is a C++ implementation of the DRG method for chemical mechanism reduction. Chemical mechanism reduction can lead to a significant decrease in the computational cost of a simulation. The code reads in a full mechanism file and eliminates chemical species and reactions that do not fall within a user defined tolerance level. A skeletal mechanism is then created that contains the remaining species and reactions. An example case of the reduction of the GRI-Mech 3.0 for methane has been included. Access to this code allows researchers to quickly create their own reduced chemical mechanisms. This code can be expanded to include the latest developments of the DRG method to allow for larger and more complex chemical mechanisms. 
 
 \end{abstract}
 
 \begin{keyword} 
 directed relation graph \sep chemical mechanism \sep DRG
 \end{keyword}
+\end{frontmatter}     
 
 %-----------------------------------------------------------------------------------
 
-\maketitle     
-
-%-----------------------------------------------------------------------------------
-
-\linenumbers
-\section{Program summary}
-\textit{Program Title:} Directed relation graph (DRG)
-\par
-%\textit{CPC library link to program files:}
-\textit{Developer's repository link:} 
-\par
-\textit{Programming language:} C++
-\par
-\textit{Nature of problem:}
-\par
-\textit{Solution method:}
-\par
-\textit{Additional comments including restrictions and unusual features:}
+\section*{Metadata}
+\label{s:Metadata}
+%
+\begin{table}[!ht]
+\begin{tabular}{|l|p{6.5cm}|p{6.5cm}|}
+\hline
+\textbf{Nr.} & \textbf{Code metadata description} & \\
+\hline
+C1 & Current code version & 1.0 \\
+\hline
+C2 & Permanent link to code/repository used for this code version & \url{https://github.com/BYUignite/drg.git} \\
+\hline
+C3  & Permanent link to Reproducible Capsule & \\
+\hline
+C4 & Legal Code License   & MIT \\
+\hline
+C5 & Code versioning system used & Git \\
+\hline
+C6 & Software code languages, tools, and services used & C++ \\
+\hline
+C7 & Compilation requirements, operating environments \& dependencies & C++11, CMake 3.15+\\
+\hline
+C8 & If available Link to developer documentation/manual & \\
+\hline
+C9 & Support email for questions & \href{mailto: davidlignell@byu.edu}{byuignite@byu.edu}\\
+\hline
+\end{tabular}
+\caption{Code metadata}
+\label{codeMetadata} 
+\end{table}
 
 \section{Introduction}      \label{sec:intro}
-\paragraph{}
 
-\paragraph{}
-\lipsum[2]     % replace this with your intro text
+Detailed chemical mechanisms have been developed to describe the reaction pathways of many chemical reactions, from hydrocarbon oxidation to halogenation. 
 
 Belaying pin loot Yellow Jack run a shot across the bow plunder provost nipper gangway brig port. Snow bowsprit deadlights yawl \cite{Lignell_2011} fathom grog blossom booty black spot gun starboard. Draft log hornswaggle Sea Legs bring a spring upon her cable draught gabion grapple overhaul spyglass \cite{Ferziger_2002, Cantera_new}.
 
@@ -89,7 +112,7 @@ Quarterdeck prow hardtack main sheet warp starboard crow's nest reef jib shrouds
 
 \section{Methods} \label{s:methods}
 
-\lipsum[1]
+%\lipsum[1]
 %
 \begin{equation}
     \frac{dU_i}{dt} =-\frac{1}{\rho\triangle
@@ -98,14 +121,14 @@ Quarterdeck prow hardtack main sheet warp starboard crow's nest reef jib shrouds
 \end{equation}
 %
 
-\lipsum[1]
+%\lipsum[1]
 %
 \begin{align}
     \frac{dr_{i}}{dt} & =U_{p,i}, \label{e:ppos}\\
     \frac{dU_{p,i}}{dt} & =-\frac{U_{p,i}-U_{g,i}}{\tau_{p}}f+g_{i}, \label{e:pmom}
 \end{align}
 %
-\lipsum[1]
+%\lipsum[1]
 %
 \begin{equation}
     f\left(y\right) = y_0 + 
@@ -119,10 +142,15 @@ Quarterdeck prow hardtack main sheet warp starboard crow's nest reef jib shrouds
 %
 
 %-----------------------------------------------------------------------------------
+\section{Software description}
+
+DRG is a C++ code used to reduce full chemical mechanisms to a user defined tolerance. All the source code is visible in the top level directory. The \verb|run| directory is where the executable is located. 
+÷
+
 
 \section{Results} \label{s:results}
 
-\lipsum[1]
+%\lipsum[1]
 
 \begin{figure}
     \centering
@@ -131,7 +159,7 @@ Quarterdeck prow hardtack main sheet warp starboard crow's nest reef jib shrouds
     \label{f:sample_1}
 \end{figure}
 
-\lipsum[1]
+%\lipsum[1]
 
 %
 \begin{figure}
@@ -153,7 +181,7 @@ Quarterdeck prow hardtack main sheet warp starboard crow's nest reef jib shrouds
 
 \subsection{Isothermal case} \label{s:isothermal}
 
-\lipsum[1]
+%\lipsum[1]
 
 \begin{table}
     \caption{}
@@ -184,13 +212,13 @@ yo-ho-ho keelhaul squiffy black spot yardarm spyglass sheet transom heave to in 
 
 \section{Discussion} \label{s:discussion}
 
-\lipsum[1]
+%\lipsum[1]
 
 %-----------------------------------------------------------------------------------
 
 \section{Conclusions} \label{s:conclusions}
 
-\lipsum[1]
+%\lipsum[1]
 
 %-----------------------------------------------------------------------------------
 
